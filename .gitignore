@@ -28,3 +28,5 @@ yarn-error.log*
 *.iml
 *.ipr
 out/
+
+.env.development
