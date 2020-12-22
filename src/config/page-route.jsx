@@ -4,6 +4,7 @@ import { Redirect } from "react-router";
 import Home from "./../pages/home.jsx";
 import About from "./../pages/about.jsx";
 import Contact from "./../pages/contact.jsx";
+import Login from "./../pages/login.jsx";
 
 const routes = [
   {
@@ -22,6 +23,10 @@ const routes = [
   {
     path: "/contact",
     component: () => <Contact />,
+  },
+  {
+    path: "/login",
+    component: () => <Login />,
   },
 ];
 

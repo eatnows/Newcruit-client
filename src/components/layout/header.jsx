@@ -9,6 +9,7 @@ class Header extends React.Component {
         <Link to="/home">Home</Link>
         <Link to="/about">About</Link>
         <Link to="/contact">Contact</Link>
+        <Link to="/login">로그인</Link>
       </>
     );
   }
