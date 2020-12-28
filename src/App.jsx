@@ -7,7 +7,7 @@ class App extends React.Component {
     return (
       <div>
         <Header />
-        <Content />
+        <Content history={this.props.history} />
       </div>
     );
   }

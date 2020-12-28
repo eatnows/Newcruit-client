@@ -2,10 +2,10 @@ import Axios from "axios";
 import React, { useState } from "react";
 import ReactDom from "react-dom";
 import GoogleLogin, { GoogleLogout } from "react-google-login";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import signUp from "./signup";
 
-const Login = () => {
+const Login = (props) => {
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -42,15 +42,25 @@ const Login = () => {
 
   const loginBtn = (e) => {
     const url = `${process.env.REACT_APP_URL}/login`;
-    Axios.post(url, {
-      email: email,
-      password: password,
+    Axios({
+      method: "POST",
+      url: url,
+      data: {
+        email: email,
+        password: password,
+      },
     })
       .then((res) => {
-        console.log(res);
+        const bearer = res.headers.authorization;
+        if (bearer.startsWith("Bearer ")) {
+          alert("로그인이 완료 되었습니다.");
+        }
+        const authorization = bearer.replace("Bearer ", "");
+        localStorage.setItem("jwtToken", authorization);
       })
       .catch((err) => {
         console.log(err);
+        console.log("gggg");
       });
   };
 
